@@ -9,7 +9,10 @@ def list_all_videos(videos):
     print("*" * 70)
 
 def add_video(videos):
-    name = input("Enter Video Namel")
+    name = input("Enter Video Name")
+    time = input("Enter Video Duration")
+    videos.append({'name':name , 'time':time})
+    save_data(videos)
 
 def delete_video(videos):
     raise NotImplementedError
