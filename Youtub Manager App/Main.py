@@ -4,7 +4,7 @@ def list_all_videos(videos):
     print(f'this is file {videos}')
 
 def add_video(videos):
-    raise NotImplementedError
+     pass
 
 def delete_video(videos):
     raise NotImplementedError
