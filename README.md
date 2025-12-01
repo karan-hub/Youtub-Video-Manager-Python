@@ -83,13 +83,4 @@ Made with ❤️ in Python 🐍
 
 ```
 
----
-
-If you want, I can also:
-
-✔ Add a **project preview image**  
-✔ Add badges like **Python version badge, stars badge**  
-✔ Make a **beautiful GitHub repo** for you 😎
-
-Chahiye?
 ```
