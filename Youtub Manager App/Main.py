@@ -1,5 +1,5 @@
 import sys
-
+import  json 
 def list_all_videos(videos):
     print(f'this is file {videos}')
 
@@ -14,15 +14,17 @@ def update_video(videos):
 
 def load_data():
     try:
-        with  open('data.txt' ,'a+') as file:
-            file.write("hellow python")
-            file.seek(0)
-            return  file.read()
+       with open('data.txt', 'r') as file:
+            data = json.load(file)
+            return data
     except FileNotFoundError:
         return []
     except  Exception as e:
         print(f'Error: {e}')
-    
+
+def save_data(videos):
+    with open('data.txt','a+') as file:
+        json.dump(videos , file)
 
 
 def main():
