@@ -1,10 +1,15 @@
 import sys
 import  json 
 def list_all_videos(videos):
-    print(f'this is file {videos}')
+    print("\n")
+    print("*" * 70)
+    for index , item in enumerate(videos , start=1):
+        print(f'Sr. {index} , name:{item['name']} , Duration:{item['time']}')
+    print("\n")
+    print("*" * 70)
 
 def add_video(videos):
-     pass
+    name = input("Enter Video Namel")
 
 def delete_video(videos):
     raise NotImplementedError
@@ -23,8 +28,10 @@ def load_data():
         print(f'Error: {e}')
 
 def save_data(videos):
-    with open('data.txt','a+') as file:
-        json.dump(videos , file)
+    data = load_data()
+    data.append(videos)
+    with open('data.txt','w') as file:
+        json.dump(data , file , indent=4)
 
 
 def main():
