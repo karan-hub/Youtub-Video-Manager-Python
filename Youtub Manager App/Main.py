@@ -23,7 +23,16 @@ def delete_video(videos):
     save_data(videos)
 
 def update_video(videos):
-    raise NotImplementedError
+    list_all_videos(videos)
+    index = int(input("Enter the video number to be deleted"))
+    if 1 <= index <= len(videos):
+        name = input("Enter the new video name") or videos[index-1].name
+        time = input("Enter the new video time") or videos[index-1].time
+        videos[index-1] ={'name': name ,'time':time}
+        save_data(videos)
+    else:
+        print("Invalid index selected")
+
 
 def load_data():
     try:
