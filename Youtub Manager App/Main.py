@@ -15,7 +15,12 @@ def add_video(videos):
     save_data(videos)
 
 def delete_video(videos):
-    raise NotImplementedError
+    list_all_videos(videos)
+    index = int(input("Enter the video number to be deleted"))
+
+    if index >0 and index<videos.len():
+        del videos[index-1]
+    save_data(videos)
 
 def update_video(videos):
     raise NotImplementedError
