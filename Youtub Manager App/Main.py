@@ -4,7 +4,7 @@ def list_all_videos(videos):
     print("\n")
     print("*" * 70)
     for index , item in enumerate(videos , start=1):
-        print(f'Sr. {index} , name:{item['name']} , Duration:{item['time']}')
+        print(f"Sr. {index}, Name: {item['name']}, Duration: {item['time']}")
     print("\n")
     print("*" * 70)
 
@@ -18,20 +18,25 @@ def delete_video(videos):
     list_all_videos(videos)
     index = int(input("Enter the video number to be deleted"))
 
-    if index >0 and index<videos.len():
+    if 1 <= index <= len(videos):
         del videos[index-1]
-    save_data(videos)
+        save_data(videos)
+        print("Video deleted successfully!")
+    else:
+        print("Invalid index!")
 
 def update_video(videos):
     list_all_videos(videos)
-    index = int(input("Enter the video number to be deleted"))
+    index = int(input("Enter the video number to be updated"))
     if 1 <= index <= len(videos):
-        name = input("Enter the new video name") or videos[index-1].name
-        time = input("Enter the new video time") or videos[index-1].time
+        name = input("Enter the new video name").strip() or videos[index-1]['name']
+        time = input("Enter the new video time").strip() or videos[index-1]['time']
         videos[index-1] ={'name': name ,'time':time}
         save_data(videos)
+        print("Video updated successfully!")
     else:
         print("Invalid index selected")
+
 
 
 def load_data():
@@ -42,13 +47,12 @@ def load_data():
     except FileNotFoundError:
         return []
     except  Exception as e:
-        print(f'Error: {e}')
+        return []
 
 def save_data(videos):
-    data = load_data()
-    data.append(videos)
+    
     with open('data.txt','w') as file:
-        json.dump(data , file , indent=4)
+        json.dump(videos , file , indent=4)
 
 
 def main():
@@ -72,9 +76,9 @@ def main():
             case '2':
                 add_video(videos)
             case '3':
-                delete_video(videos)
+               update_video(videos)
             case '4':
-                update_video(videos)
+                 delete_video(videos)
             case '5':
                 break
             case _:
